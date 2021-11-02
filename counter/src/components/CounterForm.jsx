@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { setVal } from '../actions/actions';
-import { useActions } from '../actions/useActions';
+import { useCounter } from './useCounter';
 const CounterForm = () => {
-  const actions = useActions({ setVal });
-  const counterState = useSelector(state => state.count);
-  const [counter, setCounter] = useState(counterState);
+  const { count, setVal } = useCounter();
+  const [counter, setCounter] = useState(count);
 
   useEffect(() => {
-    setCounter(counterState);
-  }, [counterState]);
+    setCounter(count);
+  }, [count]);
 
   return (
     <form
       onSubmit={ev => {
         ev.preventDefault();
-        actions.setVal(counter);
+        setVal(counter);
       }}
     >
       <input
