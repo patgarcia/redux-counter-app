@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useSelector } from 'react-redux';
 import { setVal } from '../actions/actions';
+import { useActions } from '../actions/useActions';
 const CounterForm = () => {
-  const dispatch = useDispatch();
-  const actions = bindActionCreators({ setVal }, dispatch);
+  const actions = useActions({ setVal });
   const counterState = useSelector(state => state.count);
   const [counter, setCounter] = useState(counterState);
 

@@ -1,16 +1,12 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useSelector } from 'react-redux';
 import { decrement, increment, setVal } from '../actions/actions';
+import { useActions } from '../actions/useActions';
 import CounterForm from './CounterForm';
 
 const Counter = () => {
   const count = useSelector(state => state.count);
-  const dispatch = useDispatch();
-  const actions = bindActionCreators(
-    { setVal, decrement, increment },
-    dispatch
-  );
+  const actions = useActions({ setVal, decrement, increment });
 
   return (
     <div>
